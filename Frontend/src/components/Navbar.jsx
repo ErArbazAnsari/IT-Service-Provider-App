@@ -37,9 +37,9 @@ function Navbar() {
                 {/* Logo */}
                 <NavLink
                     to="/"
-                    className="text-3xl font-bold text-gray-900 dark:text-white"
+                    className="text-3xl font-bold text-gray-900 dark:text-white select-none hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
                 >
-                    LogoArea
+                    KTCS <span className="text-sm">(OPC) Pvt. Ltd.</span>
                 </NavLink>
 
                 {/* Desktop Navigation */}
