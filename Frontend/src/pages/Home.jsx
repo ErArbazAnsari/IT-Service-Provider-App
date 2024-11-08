@@ -5,8 +5,6 @@ import { SwipeableDrawer, Button } from "@mui/material";
 import LightDarkMode from "../components/UI/LightDarkMode";
 
 // Dummy data
-
-// Dummy data
 const featuredServices = [
     {
         title: "Sale Laptop/Desktop",
@@ -86,64 +84,70 @@ const recentUpdates = [
 ];
 
 function Home() {
-    document.title = "Arbaz - IT Solutions";
+    document.title = "PCS Infoways - IT Solutions";
     const [drawerOpen, setDrawerOpen] = useState(false);
 
     return (
         <div
-            className={`dark:bg-gray-900 min-h-screen transition-colors duration-300 pt-32`}
+            className={`container mx-auto min-h-screen transition-colors duration-300 lg:my-8 md:my-0 sm:my-0`}
         >
             {/* Hero Section */}
-            <section className="relative overflow-hidden px-36">
+            <section className="relative overflow-hidden">
                 <Carousel
                     showArrows={true}
                     showIndicators={true}
                     showStatus={false}
                     infiniteLoop={true}
                     autoPlay={true}
-                    interval={3000}
-                    className="carousel-container overflow-hidden rounded-2xl bg-transparent"
+                    interval={5000}
+                    className="carousel-container overflow-hidden lg:rounded-2xl md:rounded-2xl bg-transparent md:mx-10 sm:mx-10"
                 >
-                    <div className="relative text-white h-96 flex items-center justify-center text-5xl font-bold">
-                        <div className="absolute inset-0 bg-black opacity-90 overflow-hidden rounded-2xl">
+                    {/* Slide 1 */}
+                    <div className="relative text-white h-80 sm:h-96 lg:h-[28rem] xl:h-[32rem] flex items-center justify-center">
+                        <div className="absolute inset-0 bg-black bg-opacity-70 lg:rounded-2xl md:rounded-2xl overflow-hidden">
                             <img
                                 src="/hero1.jpg"
-                                alt="IT Soulutions Parter Image"
-                                className="w-full h-full object-cover rounded-2xl overflow-hidden z-1"
+                                alt="IT Solutions Partner Image"
+                                className="w-full h-full object-cover"
                             />
                         </div>
-                        <p className="relative z-99 text-white">
+                        <p className="relative z-10 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-center px-4">
                             Your IT Solutions Partner
                         </p>
                     </div>
-                    <div className="relative text-white h-96 flex items-center justify-center text-5xl font-bold">
-                        <div className="absolute inset-0 bg-black rounded-2xl overflow-hidden opacity-90  ">
+
+                    {/* Slide 2 */}
+                    <div className="relative text-white h-80 sm:h-96 lg:h-[28rem] xl:h-[32rem] flex items-center justify-center">
+                        <div className="absolute inset-0 bg-black bg-opacity-70 lg:rounded-2xl md:rounded-2xl overflow-hidden">
                             <img
                                 src="/hero2.png"
                                 alt="Expert IT Support & Services Image"
-                                className="w-full h-full object-cover rounded-2xl opacity-90"
+                                className="w-full h-full object-cover"
                             />
                         </div>
-                        <p className="relative z-10">
+                        <p className="relative z-10 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-center px-4">
                             Expert IT Support & Services
                         </p>
                     </div>
-                    <div className="relative text-white h-96 flex items-center justify-center text-5xl font-bold ">
-                        <div className="absolute inset-0 bg-black  rounded-2xl opacity-90 overflow-hidden">
+
+                    {/* Slide 3 */}
+                    <div className="relative text-white h-80 sm:h-96 lg:h-[28rem] xl:h-[32rem] flex items-center justify-center">
+                        <div className="absolute inset-0 bg-black bg-opacity-70 lg:rounded-2xl md:rounded-2xl overflow-hidden">
                             <img
-                                src="/hero3.avif"
+                                src="/hero3.png"
                                 alt="Securing Digital Future Image"
-                                className="w-full h-full object-cover rounded-2xl"
+                                className="w-full h-full object-cover"
                             />
                         </div>
-                        <p className="relative z-10">
+                        <p className="relative z-10 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-center px-4">
                             Securing Your Digital Future
                         </p>
                     </div>
                 </Carousel>
             </section>
+
             {/* Featured Products */}
-            <section className="pb-16 pt-8 px-48 dark:bg-gray-900">
+            <section className="pb-16 pt-8 px-48 dark:bg-black">
                 <div className="container mx-auto">
                     <h2 className="text-4xl font-bold mb-8 text-gray-900 dark:text-white text-center">
                         Featured Products
@@ -236,7 +240,7 @@ function Home() {
             </section>
 
             {/* Recent Updates Section */}
-            <section className="py-16 pt-8 px-20 dark:bg-gray-900 ">
+            <section className="py-16 pt-8 px-20 dark:bg-black ">
                 <div className="container mx-auto text-center">
                     <h2 className="text-4xl font-bold mb-12 dark:text-white text-gray-800">
                         Recent Updates
@@ -260,7 +264,7 @@ function Home() {
             </section>
 
             {/* Reviews Section */}
-            <section className="pb-8 pt-8 px-96  dark:bg-gray-900">
+            <section className="pb-8 pt-8 px-96  dark:bg-black">
                 <div className="container mx-auto text-center">
                     <h2 className="text-4xl font-bold mb-8 text-gray-900 dark:text-white">
                         Customer Reviews

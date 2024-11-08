@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
@@ -15,6 +15,7 @@ function Login() {
         password: "",
     });
 
+    // Destructure necessary functions/values from useAuth
     const { storeTokenInLS, URI } = useAuth();
 
     // handle input
@@ -27,6 +28,13 @@ function Login() {
     // handle form submit
     const handleFormSubmit = async (e) => {
         e.preventDefault();
+
+        // Ensure URI is defined
+        if (!URI) {
+            toast.error("API URI is not defined");
+            return;
+        }
+
         try {
             const response = await fetch(`${URI}/myapi/login`, {
                 method: "POST",
@@ -35,21 +43,25 @@ function Login() {
                 },
                 body: JSON.stringify(user),
             });
+
+            // Check if response body exists before trying to parse it as JSON
+            if (!response.ok) {
+                const responseData = await response.json();
+                toast.error(responseData.message || "Login failed");
+                return;
+            }
+
             const responseData = await response.json();
 
-            if (!response.ok) {
-                toast.error(responseData.message);
-            }
-            if (response.ok) {
-                // Store Token in Local Storage
-                storeTokenInLS(responseData.token);
+            // Store Token in Local Storage
+            storeTokenInLS(responseData.token);
 
-                setUser({ email: "", password: "" });
-                toast.success("Login successful 😎");
-                navigate("/");
-            }
+            setUser({ email: "", password: "" });
+            toast.success("Login successful 😎");
+            navigate("/");
         } catch (error) {
             console.log("Error While Logging In: ", error);
+            toast.error("Something went wrong 😔");
         }
     };
 

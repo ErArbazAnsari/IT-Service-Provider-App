@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { MdMenu, MdClose } from "react-icons/md";
@@ -12,38 +12,31 @@ function Navbar() {
     };
 
     const AdminControl = () => {
-        // console.log("isLoggedIn: ", isLoggedIn);
-        // console.log("isLoading: ", isLoading);
-        // console.log("Admin: ", user.isAdmin);
-        if (isLoggedIn) {
-            if (isLoading) return <></>;
-            if (user.isAdmin)
-                return (
-                    <>
-                        <NavLink
-                            to="/admin"
-                            className={`text-gray-200 bg-gray-700  font-semibold hover:bg-gray-800 active:bg-gray-900  dark:bg-white dark:text-black hover:scale-105 px-3 rounded-3xl dark:hover:bg-gray-200  transition-colors duration-300`}
-                        >
-                            Admin Panel
-                        </NavLink>
-                    </>
-                );
+        if (isLoggedIn && !isLoading && user.isAdmin) {
+            return (
+                <NavLink
+                    to="/admin"
+                    className="text-white bg-blue-600 font-semibold hover:bg-blue-700 active:bg-blue-800 dark:bg-white dark:text-black px-4 py-1 rounded-lg dark:hover:bg-gray-200 transition-all duration-300"
+                >
+                    Admin Panel
+                </NavLink>
+            );
         }
     };
 
     return (
-        <header className="bg-white dark:bg-gray-900 shadow-lg fixed w-full z-50 transition-colors duration-300 text-lg px-8">
+        <header className="backdrop-filter backdrop-blur-lg shadow-md sticky w-full z-50 top-0 transition-all duration-300">
             <div className="container mx-auto flex items-center justify-between py-4">
                 {/* Logo */}
                 <NavLink
                     to="/"
-                    className="text-3xl font-bold text-gray-900 dark:text-white select-none hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+                    className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white select-none hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
                 >
-                    KTCS <span className="text-sm">(OPC) Pvt. Ltd.</span>
+                    P.C.S. <span className="text-lg">Infoways</span>
                 </NavLink>
 
                 {/* Desktop Navigation */}
-                <nav className="hidden md:flex space-x-6">
+                <nav className="hidden md:flex space-x-8 lg:space-x-6 lg:flex lg:items-center">
                     <NavLink
                         to="/"
                         className={({ isActive }) =>
@@ -92,7 +85,6 @@ function Navbar() {
                     >
                         Services
                     </NavLink>
-
                     <NavLink
                         to="/contact"
                         className={({ isActive }) =>
@@ -106,14 +98,12 @@ function Navbar() {
                         Contact Us
                     </NavLink>
 
-                    {/* const { user, isLoading, isLoggedIn } = useAuth(); */}
-
                     {isLoggedIn ? (
                         <>
-                            <AdminControl /> {/* Admin Panel */}
+                            <AdminControl />
                             <NavLink
                                 to="/logout"
-                                className={`text-gray-200 bg-gray-700  font-semibold hover:bg-gray-800 active:bg-gray-900  dark:bg-white dark:text-black hover:scale-105 px-3 rounded-3xl dark:hover:bg-gray-200  transition-colors duration-300`}
+                                className="text-white bg-blue-600 font-semibold hover:bg-blue-700 active:bg-blue-800 dark:bg-white dark:text-black px-4 py-1 rounded-lg dark:hover:bg-gray-200 transition-all duration-300"
                             >
                                 Logout
                             </NavLink>
@@ -152,7 +142,7 @@ function Navbar() {
                 <div className="md:hidden flex items-center">
                     <button
                         onClick={toggleMenu}
-                        className="p-2 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors duration-300"
+                        className="p-2 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-all duration-300"
                     >
                         {isMenuOpen ? (
                             <MdClose className="w-6 h-6" />
@@ -165,8 +155,8 @@ function Navbar() {
 
             {/* Mobile Navigation */}
             {isMenuOpen && (
-                <nav className="md:hidden bg-white dark:bg-gray-800 shadow-lg p-4">
-                    <ul className="flex flex-col space-y-4">
+                <nav className="md:hidden bg-white dark:bg-black shadow-lg p-6 mt-2 rounded-lg">
+                    <ul className="flex flex-col space-y-6 text-center">
                         <NavLink
                             to="/"
                             onClick={toggleMenu}
@@ -179,6 +169,19 @@ function Navbar() {
                             }
                         >
                             Home
+                        </NavLink>
+                        <NavLink
+                            to="/products"
+                            onClick={toggleMenu}
+                            className={({ isActive }) =>
+                                `text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 ${
+                                    isActive
+                                        ? "font-semibold border-b-2 border-blue-500"
+                                        : ""
+                                }`
+                            }
+                        >
+                            Products
                         </NavLink>
                         <NavLink
                             to="/about"
@@ -219,17 +222,12 @@ function Navbar() {
                         >
                             Contact
                         </NavLink>
+
                         {isLoggedIn ? (
                             <NavLink
                                 to="/logout"
                                 onClick={toggleMenu}
-                                className={({ isActive }) =>
-                                    `text-gray-900 dark:text-white hover:text-red-600 dark:hover:text-red-400 transition-colors duration-300 ${
-                                        isActive
-                                            ? "font-semibold border-b-2 border-red-500"
-                                            : ""
-                                    }`
-                                }
+                                className="text-white bg-blue-600 font-semibold hover:bg-blue-700 active:bg-blue-800 dark:bg-white dark:text-black px-4 py-2 rounded-lg dark:hover:bg-gray-200 transition-all duration-300"
                             >
                                 Logout
                             </NavLink>
@@ -238,26 +236,14 @@ function Navbar() {
                                 <NavLink
                                     to="/register"
                                     onClick={toggleMenu}
-                                    className={({ isActive }) =>
-                                        `text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 ${
-                                            isActive
-                                                ? "font-semibold border-b-2 border-blue-500"
-                                                : ""
-                                        }`
-                                    }
+                                    className="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
                                 >
                                     Register
                                 </NavLink>
                                 <NavLink
                                     to="/login"
                                     onClick={toggleMenu}
-                                    className={({ isActive }) =>
-                                        `text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 ${
-                                            isActive
-                                                ? "font-semibold border-b-2 border-blue-500"
-                                                : ""
-                                        }`
-                                    }
+                                    className="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
                                 >
                                     Login
                                 </NavLink>

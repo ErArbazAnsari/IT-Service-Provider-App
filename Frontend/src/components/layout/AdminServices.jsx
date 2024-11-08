@@ -308,7 +308,7 @@ function AdminServices() {
                                     value={serviceData.price}
                                     onChange={handleInputChange}
                                     className="w-full p-2 border border-gray-300 rounded dark:bg-gray-800 dark:text-white"
-                                    required
+                                    
                                 />
                             </div>
                             <div className="mb-4">
@@ -321,7 +321,7 @@ function AdminServices() {
                                     value={serviceData.provider}
                                     onChange={handleInputChange}
                                     className="w-full p-2 border border-gray-300 rounded dark:bg-gray-800 dark:text-white"
-                                    required
+                                    
                                 />
                             </div>
                             <div className="flex justify-end">

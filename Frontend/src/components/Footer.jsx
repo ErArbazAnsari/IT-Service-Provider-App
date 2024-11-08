@@ -1,11 +1,18 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useAuth } from "../store/auth";
+import { useEffect } from "react";
 
 function Footer() {
     const { isLoggedIn } = useAuth();
+    const location = useLocation();
+
+    // Scroll to top on every route change
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location.pathname]);
 
     return (
-        <footer className="bg-white dark:bg-gray-900 shadow-lg py-6">
+        <footer className="bg-white dark:bg-black shadow-lg py-6">
             <div className="container mx-auto px-4">
                 <div className="flex flex-col items-center">
                     {/* Footer Navigation Links */}
@@ -120,7 +127,7 @@ function Footer() {
                     {/* Footer Content */}
                     <div className="text-center text-gray-600 dark:text-gray-400">
                         <p className="text-sm">
-                            &copy; {new Date().getFullYear()} Arbaz Ansari. All
+                            &copy; {new Date().getFullYear()} PCS Infoways. All
                             rights reserved.
                         </p>
                     </div>

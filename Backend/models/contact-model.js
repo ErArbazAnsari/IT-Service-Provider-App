@@ -4,6 +4,8 @@ const contactSchema = new Schema({
     username: { type: String, required: true },
     email: { type: String, required: true },
     message: { type: String, required: true },
+    image: { type: String, required: false },
+    mobileNo: { type: String, required: false },
 });
 
 // create model from schema
