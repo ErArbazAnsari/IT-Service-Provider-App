@@ -24,6 +24,9 @@ app.use(express.json());
 // app.use(errorMiddleware);
 
 // All Routers
+app.use("/", (req, res) => {
+    return res.send("Backend is running properly...");
+});
 app.use("/myapi", router);
 app.use("/myapi/form", contactRoute);
 app.use("/myapi/data", serviceRoute);
