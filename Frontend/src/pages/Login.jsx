@@ -66,7 +66,7 @@ function Login() {
     };
 
     return (
-        <div className="container mx-auto lg:my-24 md:my-10 sm:my-14 dark:bg-black px-32">
+        <div className="container mx-auto lg:my-24 md:my-10 sm:my-14 dark:bg-black px-10 lg:px-32">
             <div className="container max-w-lg mx-auto bg-white dark:bg-black rounded-lg shadow-lg overflow-hidden">
                 <div className="relative">
                     <img

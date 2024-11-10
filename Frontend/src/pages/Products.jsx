@@ -64,7 +64,7 @@ const demoProducts = [
 function Products() {
     document.title = "Products";
     return (
-        <div className="container mx-auto lg:my-8 md:my-0 sm:my-0 dark:black px-32">
+        <div className="container mx-auto lg:my-8 md:my-0 sm:my-0 dark:black px-12 lg:px-32">
             <h1 className="text-3xl font-bold text-black text-center mb-8 dark:text-white">
                 Our Products
             </h1>

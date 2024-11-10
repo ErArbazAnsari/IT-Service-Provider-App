@@ -9,7 +9,7 @@ function About() {
 
     return (
         <div
-            className={`dark:black min-h-screen transition-colors duration-300 lg:my-8 md:my-0 sm:my-0 px-32`}
+            className={`dark:black min-h-screen transition-colors duration-300 lg:my-8 md:my-0 sm:my-0 px-10 lg:px-32`}
         >
             <section className="about-section dark:black text-gray-900 dark:text-gray-200 min-h-screen">
                 <main>

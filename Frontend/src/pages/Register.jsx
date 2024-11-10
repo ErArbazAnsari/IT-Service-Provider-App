@@ -54,7 +54,7 @@ function Register() {
 
     return (
         <div
-            className={`container mx-auto lg:my-24 md:my-10 sm:my-14 dark:black px-32`}
+            className={`container mx-auto lg:my-24 md:my-10 sm:my-14 dark:black px-10 lg:px-32`}
         >
             <div className="container max-w-4xl mx-auto bg-white dark:black rounded-lg shadow-lg overflow-hidden">
                 <div className="grid grid-cols-1 md:grid-cols-2">

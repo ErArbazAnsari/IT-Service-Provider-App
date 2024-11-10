@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 5000;
 
 const router = require("./routers/auth");
 const contactRoute = require("./routers/contact-router");
+const reviewRoute = require("./routers/review-router");
 const connectDB = require("./utils/db");
 const serviceRoute = require("./routers/service-router");
 const adminRoute = require("./routers/admin-router");
@@ -27,6 +28,7 @@ app.use(express.json());
 
 app.use("/myapi", router);
 app.use("/myapi/form", contactRoute);
+app.use("/myapi/review", reviewRoute);
 app.use("/myapi/data", serviceRoute);
 
 // Admin Routes

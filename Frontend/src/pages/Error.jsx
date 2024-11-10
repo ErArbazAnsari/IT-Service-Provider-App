@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import LightDarkMode from "../components/UI/LightDarkMode";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 function Error() {
     useEffect(() => {
         document.title = "404 Error";
-        toast.error("Page not found!");
+        // toast.error("Page not found!");
     }, []);
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-black mt-[-100px]">
             <div className="text-center p-8">
                 <h1 className="text-8xl font-bold text-gray-800 dark:text-white">
                     404

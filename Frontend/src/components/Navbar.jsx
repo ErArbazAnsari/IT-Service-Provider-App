@@ -25,7 +25,7 @@ function Navbar() {
     };
 
     return (
-        <header className="backdrop-filter backdrop-blur-lg shadow-md sticky w-full z-50 top-0 transition-all duration-300">
+        <header className="backdrop-filter backdrop-blur-lg shadow-md sticky w-full z-50 top-0 transition-all duration-300 px-3">
             <div className="container mx-auto flex items-center justify-between py-4">
                 {/* Logo */}
                 <NavLink

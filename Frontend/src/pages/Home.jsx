@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { SwipeableDrawer, Button } from "@mui/material";
 import LightDarkMode from "../components/UI/LightDarkMode";
+import { toast } from "react-toastify";
 
 // Dummy data
 const featuredServices = [
@@ -32,64 +32,96 @@ const featuredServices = [
     },
 ];
 
-// Dummy data
-const featuredProducts = [
-    {
-        title: "Complete IT Support Package",
-        description:
-            "Comprehensive IT support for small businesses, including software installation, network setup, and regular maintenance.",
-        price: "$499.99",
-        image: "/Featured_Products/support.png",
-    },
-    {
-        title: "Website Development",
-        description:
-            "Professional website development services tailored to your business needs, with responsive design and SEO optimization.",
-        price: "$999.99",
-        image: "/Featured_Products/development.png",
-    },
-    {
-        title: "Cloud Backup Solutions",
-        description:
-            "Secure cloud backup solutions to keep your business data safe and accessible from anywhere.to keep your business data safe and accessible from anywhere.",
-        price: "$299.99",
-        image: "/Featured_Products/cloud.png",
-    },
-    {
-        title: "Network Security Services",
-        description:
-            "Advanced network security services to protect your business from cyber threats and ensure data integrity. ensure data integrity",
-        price: "$399.99",
-        image: "/Featured_Products/networking.png",
-    },
-    {
-        title: "Hardware Installation",
-        description:
-            "Expert installation of hardware components, including servers, workstations, and networking devices. ensure data integrity ensure data integrity",
-        price: "$199.99",
-        image: "/Featured_Products/repairing.png",
-    },
-];
-
+// recent updates
 const recentUpdates = [
-    "New cloud services launched this month.",
-    "Cybersecurity enhancements for all clients.",
-    "Special offers on IT support for small businesses.",
-    "Launched a new customer portal for easy service management.",
-    "Expanded partnership with top hardware vendors.",
-    "Upgraded network solutions for higher reliability.",
-    "Introduced 24/7 customer support for all service plans.",
-    "New data backup solutions now available with enhanced security.",
-    "Completed 100+ successful IT support cases this quarter.",
+    {
+        title: "Launch of New Product Line",
+        detail: "We are thrilled to announce the launch of our latest product line with innovative features.",
+    },
+    {
+        title: "Expansion to New Regions",
+        detail: "Our services are now available in additional regions, bringing quality and convenience closer.",
+    },
+    {
+        title: "New Partnership",
+        detail: "Excited to collaborate with industry leaders to offer comprehensive solutions to our customers.",
+    },
+    {
+        title: "Upcoming Webinar",
+        detail: "Join our experts to discuss the latest market trends and strategies to leverage them.",
+    },
+    {
+        title: "Website Redesign",
+        detail: "We have revamped our website for a better user experience, optimized navigation, and modern aesthetics.",
+    },
+    {
+        title: "Quarterly Report Released",
+        detail: "Our latest quarterly report is now available, showcasing key achievements and financial performance.",
+    },
+    {
+        title: "Customer Success Story",
+        detail: "Read about how one of our clients achieved remarkable results using our solutions and services.",
+    },
+    {
+        title: "Employee Spotlight",
+        detail: "Celebrating our outstanding team members who contribute to our success and embody our core values.",
+    },
 ];
 
+const customerReviews = [
+    {
+        id: 1,
+        image: "https://www.aiscribbles.com/img/variant/large-preview/9570/?v=5528a6",
+        name: "John Doe",
+        review: "Excellent product! Highly recommend it.",
+        rating: 5,
+    },
+    {
+        id: 2,
+        image: "https://www.aiscribbles.com/img/variant/large-preview/9570/?v=5528a6",
+        name: "Jane Smith",
+        review: "Good quality, but a bit pricey.",
+        rating: 4,
+    },
+    {
+        id: 3,
+        image: "https://www.aiscribbles.com/img/variant/large-preview/9570/?v=5528a6",
+        name: "David Brown",
+        review: "Not satisfied with the performance.",
+        rating: 2,
+    },
+    {
+        id: 4,
+        image: "https://www.aiscribbles.com/img/variant/large-preview/9570/?v=5528a6",
+        name: "Alice Green",
+        review: "Excellent product! Highly recommend it.",
+        rating: 4,
+    },
+    {
+        id: 5,
+        image: "https://www.aiscribbles.com/img/variant/large-preview/9570/?v=5528a6",
+        name: "Jane Smith",
+        review: "Good quality, but a bit pricey.",
+        rating: 4,
+    },
+    {
+        id: 6,
+        image: "https://www.aiscribbles.com/img/variant/large-preview/9570/?v=5528a6",
+        name: "Jane Smith",
+        review: "Good quality, but a bit pricey.",
+        rating: 4,
+    },
+];
 function Home() {
     document.title = "Service Provider - IT Solutions";
     const [drawerOpen, setDrawerOpen] = useState(false);
 
+    const [reviewer, setReviewer] = useState("");
+    const [reviewerMessage, setReviewerMessage] = useState("");
+
     return (
         <div
-            className={`container mx-auto min-h-screen transition-colors duration-300 lg:my-8 md:my-0 sm:my-0`}
+            className={`container mx-auto min-h-screen transition-colors duration-300 lg:my-8 md:my-0 sm:my-0 lg:mb-0`}
         >
             {/* Hero Section */}
             <section className="relative overflow-hidden">
@@ -100,7 +132,8 @@ function Home() {
                     infiniteLoop={true}
                     autoPlay={true}
                     interval={5000}
-                    className="carousel-container overflow-hidden lg:rounded-2xl md:rounded-2xl bg-transparent md:mx-10 sm:mx-10"
+                    showThumbs={false}
+                    className="carousel-container overflow-hidden lg:rounded-2xl md:rounded-2xl bg-transparent md:mx-6 sm:mx-8"
                 >
                     {/* Slide 1 */}
                     <div className="relative text-white h-80 sm:h-96 lg:h-[28rem] xl:h-[32rem] flex items-center justify-center">
@@ -147,49 +180,62 @@ function Home() {
             </section>
 
             {/* Featured Products */}
-            <section className="pb-16 pt-8 px-48 dark:bg-black">
+            <section className="pb-16 pt-8 px-6 sm:px-8 md:px-16 lg:px-32 dark:bg-black">
                 <div className="container mx-auto">
-                    <h2 className="text-4xl font-bold mb-8 text-gray-900 dark:text-white text-center">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-gray-900 dark:text-white text-center">
                         Featured Products
                     </h2>
-                    <div className="flex justify-center gap-8">
-                        <div className="p-4 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center w-full sm:w-1/3 hover:scale-105 transition duration-300 cursor-pointer">
+                    <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+                        <div className="p-4 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center w-full hover:scale-105 transition duration-300 cursor-pointer">
                             <img
                                 src="/Products/apple2.png"
                                 alt="Product 1"
                                 className="w-full h-48 object-cover rounded-lg mb-4"
                             />
-                            <h3 className="text-xl font-semibold mb-2 dark:text-white">
+                            <h3 className="text-lg md:text-xl font-semibold mb-2 dark:text-white">
                                 Apple MacBook Air
                             </h3>
                             <p className="text-gray-600 dark:text-gray-300 mb-4">
                                 $99.99
                             </p>
                         </div>
-                        <div className="p-4 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center w-full sm:w-1/3 hover:scale-105 transition duration-300 cursor-pointer">
+                        <div className="p-4 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center w-full hover:scale-105 transition duration-300 cursor-pointer">
                             <img
                                 src="/Products/apple.png"
                                 alt="Product 2"
                                 className="w-full h-48 object-cover rounded-lg mb-4"
                             />
-                            <h3 className="text-xl font-semibold mb-2 dark:text-white">
+                            <h3 className="text-lg md:text-xl font-semibold mb-2 dark:text-white">
                                 MacBook Pro M3
                             </h3>
                             <p className="text-gray-600 dark:text-gray-300 mb-4">
                                 $129.99
                             </p>
                         </div>
-                        <div className="p-4 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center w-full sm:w-1/3 hover:scale-105 transition duration-300 cursor-pointer">
+                        <div className="p-4 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center w-full hover:scale-105 transition duration-300 cursor-pointer">
                             <img
                                 src="/Products/asus.png"
                                 alt="Product 3"
                                 className="w-full h-48 object-cover rounded-lg mb-4"
                             />
-                            <h3 className="text-xl font-semibold mb-2 dark:text-white">
+                            <h3 className="text-lg md:text-xl font-semibold mb-2 dark:text-white">
                                 Asus ZenBook
                             </h3>
                             <p className="text-gray-600 dark:text-gray-300 mb-4">
                                 $149.99
+                            </p>
+                        </div>
+                        <div className="p-4 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center w-full hover:scale-105 transition duration-300 cursor-pointer">
+                            <img
+                                src="/Products/apple2.png"
+                                alt="Product 1"
+                                className="w-full h-48 object-cover rounded-lg mb-4"
+                            />
+                            <h3 className="text-lg md:text-xl font-semibold mb-2 dark:text-white">
+                                Apple MacBook Air
+                            </h3>
+                            <p className="text-gray-600 dark:text-gray-300 mb-4">
+                                $99.99
                             </p>
                         </div>
                     </div>
@@ -205,21 +251,21 @@ function Home() {
             </section>
 
             {/* Featured Services Section */}
-            <section className="pb-16 pt-8 px-48">
+            <section className="pb-16 pt-8 px-6 sm:px-8 md:px-16 lg:px-32">
                 <div className="container mx-auto text-center">
-                    <h2 className="text-4xl font-bold mb-8 dark:text-white">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 dark:text-white">
                         Our Featured Services
                     </h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
                         {featuredServices.map((service, index) => (
                             <div
                                 key={index}
-                                className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 dark:text-white"
+                                className="p-4 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center w-full hover:scale-105 transition duration-300 cursor-pointer"
                             >
-                                <div className="text-5xl mb-4">
+                                <div className="text-4xl sm:text-5xl mb-4">
                                     {service.icon}
                                 </div>
-                                <h3 className="text-2xl font-semibold mb-2">
+                                <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2 text-black dark:text-gray-300">
                                     {service.title}
                                 </h3>
                                 <p className="text-gray-600 dark:text-gray-300">
@@ -240,23 +286,35 @@ function Home() {
             </section>
 
             {/* Recent Updates Section */}
-            <section className="py-16 pt-8 px-20 dark:bg-black ">
+            <section className="py-16 pt-8 px-4 sm:px-8 md:px-16 lg:px-24 dark:bg-black">
                 <div className="container mx-auto text-center">
-                    <h2 className="text-4xl font-bold mb-12 dark:text-white text-gray-800">
+                    <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-gray-800 dark:text-white">
                         Recent Updates
                     </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-48">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {recentUpdates.map((update, index) => (
                             <div
                                 key={index}
-                                className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl"
+                                className="p-4 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center w-full hover:scale-105 transition duration-300 cursor-pointer"
                             >
-                                <h3 className="text-2xl font-semibold mb-2 dark:text-white text-gray-900">
-                                    Update {index + 1}
+                                <div className="flex items-center justify-center mb-4">
+                                    <span className="text-blue-500 text-4xl dark:text-blue-400">
+                                        {/* Example icon */}
+                                        <i className="fas fa-bell"></i>
+                                    </span>
+                                </div>
+                                <h3 className="text-xl md:text-2xl font-semibold mb-3 text-gray-900 dark:text-white">
+                                    {update.title}
                                 </h3>
-                                <p className="text-gray-700 dark:text-gray-300 text-lg">
-                                    {update}
+                                <p className="text-gray-700 dark:text-gray-300 mb-4">
+                                    {update.detail}
                                 </p>
+                                <a
+                                    href="/updates"
+                                    className="text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 font-semibold"
+                                >
+                                    Read more →
+                                </a>
                             </div>
                         ))}
                     </div>
@@ -264,18 +322,36 @@ function Home() {
             </section>
 
             {/* Reviews Section */}
-            <section className="pb-8 pt-8 px-96  dark:bg-black">
-                <div className="container mx-auto text-center">
+            <section className="pb-8 pt-8 dark:bg-black">
+                <div className="container mx-auto text-center lg:max-w-[600px] md:max-w-[500px] sm:max-w-[430px]">
                     <h2 className="text-4xl font-bold mb-8 text-gray-900 dark:text-white">
                         Customer Reviews
                     </h2>
                     <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <input
+                            type="text"
+                            placeholder="Enter your name"
+                            className="w-full p-3 mb-4 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all"
+                            name="reviewer"
+                            value={reviewer}
+                            onChange={(e) => setReviewer(e.target.value)}
+                        />
                         <textarea
                             placeholder="Write your review..."
-                            className="w-full p-4 mb-4 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all"
+                            className="w-full p-3 mb-4 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all"
                             rows="4"
+                            value={reviewerMessage}
+                            name="reviewerMessage"
+                            onChange={(e) => setReviewerMessage(e.target.value)}
                         ></textarea>
                         <button
+                            onClick={() => {
+                                console.log(reviewer, reviewerMessage);
+
+                                setReviewer("");
+                                setReviewerMessage("");
+                                toast.success("Review Submitted 😅");
+                            }}
                             className="bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 px-6 py-3 rounded-lg font-semibold transition-all"
                             aria-label="Submit Review"
                         >
@@ -285,52 +361,57 @@ function Home() {
                 </div>
             </section>
 
-            {/* Reviews & Ratings Section */}
-            <section className="pb-16 px-96">
+            {/* Previous Review checking */}
+            <section className="pb-16 px-6 sm:px-16 md:px-32 lg:px-48">
                 <div className="container mx-auto text-center">
-                    <Button
-                        onClick={() => setDrawerOpen(true)}
-                        className="mb-8 bg-blue-500 text-white hover:bg-blue-600 dark:text-white dark:hover:bg-blue-500 hover:text-white"
+                    <button
+                        onClick={() => setDrawerOpen(!drawerOpen)}
+                        className="mb-8 px-6 py-3 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition duration-300 font-semibold"
                     >
                         Check Customer Reviews
-                    </Button>
-                    <SwipeableDrawer
-                        anchor="bottom"
-                        open={drawerOpen}
-                        onClose={() => setDrawerOpen(false)}
-                        onOpen={() => setDrawerOpen(true)}
-                    >
-                        <div className="p-4">
-                            <h2 className="text-2xl font-bold mb-4 text-center">
-                                Customer Reviews
-                            </h2>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mx-10">
-                                {featuredProducts.map((product, index) => (
-                                    <div
-                                        key={index}
-                                        className="flex flex-col items-center bg-white dark:bg-gray-800 shadow-md rounded-lg p-4"
-                                    >
-                                        <img
-                                            src={product.image}
-                                            alt={product.title}
-                                            className="w-full h-40 object-cover rounded-md mb-4"
-                                        />
-                                        <div className="text-center">
-                                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                                                {product.title}
+                    </button>
+
+                    {drawerOpen && (
+                        <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-end">
+                            <div className="bg-white dark:bg-gray-800 w-full max-h-80vh overflow-y-auto rounded-t-lg shadow-lg p-6">
+                                <button
+                                    onClick={() => setDrawerOpen(false)}
+                                    className=" hover:bg-red-800 transition duration-300 text-sm mb-4 bg-red-600 text-white p-2 px-5 rounded-lg font-semibold"
+                                >
+                                    Close
+                                </button>
+                                <h2 className="text-2xl font-bold mb-4 text-center dark:text-white">
+                                    Customer Reviews
+                                </h2>
+                                <div className="flex gap-6 scroll-auto container mx-auto">
+                                    {customerReviews.map((review, index) => (
+                                        <div
+                                            key={index}
+                                            className="bg-gray-50 dark:bg-gray-700 shadow-md rounded-lg p-3 text-center transform transition duration-300 hover:scale-105 max-w-60 min-w-52"
+                                        >
+                                            <img
+                                                src={review.image}
+                                                alt={review.name}
+                                                className="w-20 h-20 rounded-full object-cover mx-auto mb-4"
+                                            />
+                                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                                                {review.name}
                                             </h3>
-                                            <p className="text-gray-700 dark:text-gray-400 mb-2">
-                                                {product.description}
+                                            <p className="text-gray-700 dark:text-gray-300 mb-2">
+                                                {review.review}
                                             </p>
-                                            <p className="text-lg font-bold text-blue-600 dark:text-blue-400">
-                                                {product.price}
+                                            <p className="text-yellow-500 text-lg font-bold">
+                                                {"★".repeat(review.rating) +
+                                                    "☆".repeat(
+                                                        5 - review.rating
+                                                    )}
                                             </p>
                                         </div>
-                                    </div>
-                                ))}
+                                    ))}
+                                </div>
                             </div>
                         </div>
-                    </SwipeableDrawer>
+                    )}
                 </div>
             </section>
 

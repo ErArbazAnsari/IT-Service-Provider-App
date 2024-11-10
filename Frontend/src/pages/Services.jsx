@@ -26,7 +26,7 @@ function Services() {
     }, []);
 
     return (
-        <div className="container mx-auto lg:my-8 md:my-0 sm:my-0 dark:black px-32">
+        <div className="container mx-auto lg:my-8 md:my-0 sm:my-0 dark:black px-12 lg:px-32">
             <h1 className="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-gray-100">
                 Our Services
             </h1>
@@ -34,7 +34,7 @@ function Services() {
                 {services.map((service) => (
                     <div
                         key={service._id}
-                        className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 transition transform hover:scale-[1.02] hover:shadow-lg"
+                        className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 transition transform hover:scale-[1.02] hover:shadow-lg min-w-48"
                     >
                         <div className="mb-4 flex justify-center">
                             <img
@@ -51,7 +51,7 @@ function Services() {
                         </p>
                         <p className="text-gray-600 dark:text-gray-400 mt-2">
                             {service.description.length > 60
-                                ? service.description.slice(0, 55)+"..."
+                                ? service.description.slice(0, 55) + "..."
                                 : service.description}
                         </p>
                         <div className="mt-4">
