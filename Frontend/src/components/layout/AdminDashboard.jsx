@@ -69,7 +69,7 @@ function AdminDashboard() {
     }, []);
 
     return (
-        <div className="container mx-auto lg:px-48 md:px-5 sm:px-5 min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300 py-24">
+        <div className="container mx-auto lg:px-48 md:px-5 sm:px-5 min-h-screen dark:bg-black text-gray-800 dark:text-white py-28">
             <div className="flex flex-col items-center justify-center h-48">
                 <div className="text-center">
                     <p className="text-4xl sm:text-5xl md:text-6xl font-bold mb-2">

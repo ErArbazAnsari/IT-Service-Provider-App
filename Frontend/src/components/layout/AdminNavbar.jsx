@@ -3,18 +3,18 @@ import { MdLogout } from "react-icons/md";
 
 function AdminNavbar() {
     return (
-        <header className="bg-white dark:bg-gray-800 shadow-md rounded-full px-6 py-2 flex justify-between items-center max-w-7xl mx-auto fixed top-0 left-0 right-0 z-50 transition-colors duration-300">
+        <header className="bg-white dark:bg-gray-800 shadow-md rounded-full px-6 py-2 flex justify-between items-center max-w-7xl mx-auto fixed top-0 left-0 right-0 z-50">
             {/* Logo and Admin Panel Link */}
             <div className="flex items-center">
                 <NavLink to="/admin">
                     <img
                         src="/adminLogo.webp"
                         alt="AdminLogo"
-                        className="h-12 w-12 rounded-full transition-transform duration-300 hover:scale-110"
+                        className="h-12 w-12 rounded-full"
                     />
                 </NavLink>
                 <NavLink to="/admin">
-                    <span className="ml-3 text-2xl font-semibold text-gray-900 dark:text-gray-100">
+                    <span className="ml-3 text-2xl font-semibold text-gray-800 hover:text-black dark:text-gray-200 dark:hover:text-white">
                         AdminPanel
                     </span>
                 </NavLink>
@@ -23,24 +23,12 @@ function AdminNavbar() {
             {/* Navigation Links */}
             <nav className="flex items-center space-x-6">
                 <NavLink
-                    to="/admin"
-                    className={({ isActive }) =>
-                        `text-gray-900 dark:text-gray-100 ${
-                            isActive
-                                ? "text-blue-700 dark:text-blue-400 scale-110"
-                                : "hover:text-blue-700 dark:hover:text-blue-400 hover:scale-110"
-                        } transition-transform duration-200`
-                    }
-                >
-                    Admin
-                </NavLink>
-                <NavLink
                     to="/admin/users"
                     className={({ isActive }) =>
                         `text-gray-900 dark:text-gray-100 ${
                             isActive
-                                ? "text-blue-700 dark:text-blue-400 scale-110"
-                                : "hover:text-blue-700 dark:hover:text-blue-400 hover:scale-110"
+                                ? "text-black font-semibold"
+                                : "hover:text-blue-700 dark:hover:text-blue-400 "
                         } transition-transform duration-200`
                     }
                 >
@@ -51,8 +39,8 @@ function AdminNavbar() {
                     className={({ isActive }) =>
                         `text-gray-900 dark:text-gray-100 ${
                             isActive
-                                ? "text-blue-700 dark:text-blue-400 scale-110"
-                                : "hover:text-blue-700 dark:hover:text-blue-400 hover:scale-110"
+                                ? "text-black font-semibold"
+                                : "hover:text-blue-700 dark:hover:text-blue-400 "
                         } transition-transform duration-200`
                     }
                 >
@@ -63,8 +51,8 @@ function AdminNavbar() {
                     className={({ isActive }) =>
                         `text-gray-900 dark:text-gray-100 ${
                             isActive
-                                ? "text-blue-700 dark:text-blue-400 scale-110"
-                                : "hover:text-blue-700 dark:hover:text-blue-400 hover:scale-110"
+                                ? "text-black font-semibold"
+                                : "hover:text-blue-700 dark:hover:text-blue-400 "
                         } transition-transform duration-200`
                     }
                 >
@@ -73,14 +61,14 @@ function AdminNavbar() {
                 <NavLink
                     to="/"
                     className={({ isActive }) =>
-                        `text-blue-600 dark:text-gray-100 ${
+                        `text-black dark:text-gray-100 ${
                             isActive
-                                ? "text-blue-700 dark:text-blue-400 scale-110"
-                                : "hover:text-blue-700 dark:hover:text-blue-400 hover:scale-110"
+                                ? "text-black font-semibold"
+                                : "hover:text-blue-700 dark:hover:text-blue-400 "
                         } transition-transform duration-200`
                     }
                 >
-                    Website Home
+                    Website
                 </NavLink>
                 {/* Logout Button */}
                 <NavLink
@@ -90,6 +78,7 @@ function AdminNavbar() {
                     <MdLogout
                         className="h-6 w-6 hover:scale-110 transition-transform duration-200"
                         aria-label="Logout"
+                        title="logout"
                     />
                 </NavLink>
             </nav>

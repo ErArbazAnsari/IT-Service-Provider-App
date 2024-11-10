@@ -9,13 +9,13 @@ function About() {
 
     return (
         <div
-            className={`dark:bg-gray-900 min-h-screen transition-colors duration-300 pt-14`}
+            className={`dark:black min-h-screen transition-colors duration-300 lg:my-8 md:my-0 sm:my-0 px-32`}
         >
-            <section className="about-section dark:bg-gray-900 text-gray-900 dark:text-gray-200 min-h-screen p-24">
+            <section className="about-section dark:black text-gray-900 dark:text-gray-200 min-h-screen">
                 <main>
                     <div className="container mx-auto">
-                        <div className="about-content max-w-3xl mx-auto dark:bg-gray-800 p-8 rounded-lg shadow-lg">
-                            <h1 className="main-heading text-4xl font-bold mb-6 dark:text-white text-center">
+                        <div className="about-content max-w-4xl mx-auto dark:bg-black 800 p-8 py-0 rounded-lg">
+                            <h1 className="text-3xl font-bold text-black text-center mb-8 dark:text-white">
                                 About Us
                             </h1>
                             {isLoggedIn && (
@@ -27,7 +27,7 @@ function About() {
                                     Welcome
                                 </h3>
                             )}
-                            <div className="flex flex-col lg:flex-row items-center justify-around mb-12">
+                            <div className="flex flex-col lg:flex-row  justify-around mb-12 gap-3">
                                 <div className="lg:w-1/2 mb-6 lg:mb-0">
                                     <h2 className="text-3xl font-semibold mb-4">
                                         Our Mission

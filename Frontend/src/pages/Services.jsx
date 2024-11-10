@@ -4,27 +4,20 @@ import { useAuth } from "../store/auth";
 
 function Services() {
     document.title = "Services";
-
     const { URI } = useAuth();
-
     const [services, setServices] = React.useState([]);
 
     // Fetch data from the backend
     const fetchServices = async () => {
         try {
-            const response = await fetch(`${URI}/myapi/data/service`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
+            const response = await fetch(`${URI}/myapi/data/service`);
             if (!response.ok) {
-                console.log("Error while getting data from backend");
+                console.error("Error fetching data from backend");
             }
             const data = await response.json();
             setServices(data.allServices || []);
         } catch (error) {
-            console.log("Error found while fetching services", error);
+            console.error("Error fetching services:", error);
         }
     };
 
@@ -33,49 +26,45 @@ function Services() {
     }, []);
 
     return (
-        <div
-            className={`dark:bg-gray-900 min-h-screen transition-colors duration-300 py-28`}
-        >
-            <section className="services-section  dark:bg-gray-900 max-w-fit min-h-screen">
-                <main className="container mx-auto sm:px-12 lg:px-40">
-                    <h1 className="text-4xl font-bold text-center text-gray-800 dark:text-gray-200 mb-12">
-                        Our Services
-                    </h1>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                        {services.map((service) => (
-                            <div
-                                className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center hover:shadow-xl transform hover:scale-105 transition duration-300 ease-in-out cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700"
-                                key={service._id}
+        <div className="container mx-auto lg:my-8 md:my-0 sm:my-0 dark:black px-32">
+            <h1 className="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-gray-100">
+                Our Services
+            </h1>
+            <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {services.map((service) => (
+                    <div
+                        key={service._id}
+                        className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 transition transform hover:scale-[1.02] hover:shadow-lg"
+                    >
+                        <div className="mb-4 flex justify-center">
+                            <img
+                                src={"/services1.png"}
+                                alt={service.service}
+                                className="h-24 w-24 rounded-full bg-gray-100 dark:bg-gray-700"
+                            />
+                        </div>
+                        <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
+                            {service.service}
+                        </h2>
+                        <p className="text-blue-600 dark:text-blue-400 font-medium">
+                            {service.provider}
+                        </p>
+                        <p className="text-gray-600 dark:text-gray-400 mt-2">
+                            {service.description.length > 60
+                                ? service.description.slice(0, 55)+"..."
+                                : service.description}
+                        </p>
+                        <div className="mt-4">
+                            <a
+                                href="#"
+                                className="text-blue-500 dark:text-blue-400 font-medium hover:underline"
                             >
-                                <div className="mb-4 flex justify-center">
-                                    <img
-                                        src={"/services.png"}
-                                        alt={service.service}
-                                        className="h-16 w-16 bg-slate-50 rounded-full"
-                                    />
-                                </div>
-                                <h2 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                                    {service.service}
-                                </h2>
-                                <h3 className="text-blue-500 font-medium mb-4">
-                                    {service.provider}
-                                </h3>
-                                <p className="text-gray-600 dark:text-gray-400 mb-6">
-                                    {service.description}
-                                </p>
-                                <a
-                                    href="#"
-                                    className="text-blue-500 dark:text-blue-400 font-medium hover:underline"
-                                >
-                                    Learn More &rarr;
-                                </a>
-                            </div>
-                        ))}
+                                Learn More &rarr;
+                            </a>
+                        </div>
                     </div>
-                </main>
-            </section>
-
-            {/* Dark Mode Toggle Button */}
+                ))}
+            </div>
             <LightDarkMode />
         </div>
     );

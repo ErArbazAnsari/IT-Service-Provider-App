@@ -66,24 +66,24 @@ function Login() {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
-            <div className="max-w-md w-full bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden">
+        <div className="container mx-auto lg:my-24 md:my-10 sm:my-14 dark:bg-black px-32">
+            <div className="container max-w-lg mx-auto bg-white dark:bg-black rounded-lg shadow-lg overflow-hidden">
                 <div className="relative">
                     <img
                         src="https://i.pinimg.com/736x/4a/90/33/4a903338c0e478248153bd8f3f6f6745.jpg"
                         alt="Login"
-                        className="w-full h-48 object-cover"
+                        className="w-full h-[180px] object-cover"
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
                         <h1 className="text-white text-3xl font-bold">Login</h1>
                     </div>
                 </div>
-                <div className="p-8">
+                <div className="p-8 dark:bg-gray-800">
                     <form onSubmit={handleFormSubmit} className="space-y-4">
                         <div>
                             <label
                                 htmlFor="email"
-                                className="block text-gray-700 dark:text-gray-300 text-sm font-semibold mb-1"
+                                className="block text-gray-700 dark:text-gray-300 mb-2 font-medium"
                             >
                                 Email
                             </label>
@@ -96,14 +96,14 @@ function Login() {
                                 autoComplete="off"
                                 value={user.email}
                                 onChange={handleInput}
-                                className="w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:border-blue-500 dark:focus:border-blue-400 focus:ring focus:ring-blue-500 dark:focus:ring-blue-400 focus:ring-opacity-50 p-3"
+                                className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-teal-500"
                             />
                         </div>
 
                         <div>
                             <label
                                 htmlFor="password"
-                                className="block text-gray-700 dark:text-gray-300 text-sm font-semibold mb-1"
+                                className="block text-gray-700 dark:text-gray-300 mb-2 font-medium"
                             >
                                 Password
                             </label>
@@ -116,7 +116,7 @@ function Login() {
                                 autoComplete="off"
                                 value={user.password}
                                 onChange={handleInput}
-                                className="w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:border-blue-500 dark:focus:border-blue-400 focus:ring focus:ring-blue-500 dark:focus:ring-blue-400 focus:ring-opacity-50 p-3"
+                                className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-teal-500"
                             />
                         </div>
 

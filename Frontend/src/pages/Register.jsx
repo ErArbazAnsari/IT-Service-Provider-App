@@ -54,32 +54,32 @@ function Register() {
 
     return (
         <div
-            className={`dark:bg-gray-900 min-h-screen transition-colors duration-300 flex items-center justify-center py-20`}
+            className={`container mx-auto lg:my-24 md:my-10 sm:my-14 dark:black px-32`}
         >
-            <div className="container max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+            <div className="container max-w-4xl mx-auto bg-white dark:black rounded-lg shadow-lg overflow-hidden">
                 <div className="grid grid-cols-1 md:grid-cols-2">
-                    <div className="hidden md:flex flex-col justify-center bg-gradient-to-r from-purple-500 to-indigo-500 text-white p-10">
-                        <h2 className="text-4xl font-bold mb-4">Join Us</h2>
-                        <p className="text-lg">
+                    <div className="hidden lg:flex flex-col justify-center items-center bg-gradient-to-r from-teal-400 to-blue-500 text-white p-8 lg:p-10">
+                        <h2 className="text-3xl font-bold mb-4">Join Us</h2>
+                        <p className="text-center text-lg mb-6">
                             Experience the best services with us. Create your
                             account now to get started!
                         </p>
                         <img
                             src="https://i.pinimg.com/736x/4a/90/33/4a903338c0e478248153bd8f3f6f6745.jpg"
                             alt="registration"
-                            className="mt-10 rounded-lg shadow-md"
+                            className="max-w-xs h-auto rounded-lg shadow-md"
                         />
                     </div>
 
-                    <div className="p-8 md:p-12 bg-gray-100 dark:bg-gray-800">
-                        <h1 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-200 mb-8">
+                    <div className="p-6 sm:p-8 bg-white dark:bg-gray-800">
+                        <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-200 text-center mb-6">
                             Register
                         </h1>
                         <form onSubmit={handleFormSubmit} className="space-y-6">
                             <div className="form-group">
                                 <label
                                     htmlFor="username"
-                                    className="block text-gray-700 dark:text-gray-300 mb-2"
+                                    className="block text-gray-700 dark:text-gray-300 mb-2 font-medium"
                                 >
                                     Username
                                 </label>
@@ -92,13 +92,13 @@ function Register() {
                                     autoComplete="off"
                                     value={user.username}
                                     onChange={handleInput}
-                                    className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-purple-500"
+                                    className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-teal-500"
                                 />
                             </div>
                             <div className="form-group">
                                 <label
                                     htmlFor="email"
-                                    className="block text-gray-700 dark:text-gray-300 mb-2"
+                                    className="block text-gray-700 dark:text-gray-300 mb-2 font-medium"
                                 >
                                     Email
                                 </label>
@@ -111,13 +111,13 @@ function Register() {
                                     autoComplete="off"
                                     value={user.email}
                                     onChange={handleInput}
-                                    className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-purple-500"
+                                    className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-teal-500"
                                 />
                             </div>
                             <div className="form-group">
                                 <label
                                     htmlFor="phone"
-                                    className="block text-gray-700 dark:text-gray-300 mb-2"
+                                    className="block text-gray-700 dark:text-gray-300 mb-2 font-medium"
                                 >
                                     Phone
                                 </label>
@@ -130,13 +130,13 @@ function Register() {
                                     autoComplete="off"
                                     value={user.phone}
                                     onChange={handleInput}
-                                    className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-purple-500"
+                                    className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-teal-500"
                                 />
                             </div>
                             <div className="form-group">
                                 <label
                                     htmlFor="password"
-                                    className="block text-gray-700 dark:text-gray-300 mb-2"
+                                    className="block text-gray-700 dark:text-gray-300 mb-2 font-medium"
                                 >
                                     Password
                                 </label>
@@ -149,12 +149,12 @@ function Register() {
                                     autoComplete="off"
                                     value={user.password}
                                     onChange={handleInput}
-                                    className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-purple-500"
+                                    className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-teal-500"
                                 />
                             </div>
                             <button
                                 type="submit"
-                                className="w-full py-3 rounded-lg bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-semibold hover:from-purple-600 hover:to-indigo-600 transition duration-200 focus:ring-2 focus:ring-purple-500"
+                                className="w-full py-2 rounded-lg bg-gradient-to-r from-teal-500 to-blue-600 text-white font-semibold hover:from-teal-600 hover:to-blue-700 transition duration-200 focus:ring-2 focus:ring-teal-500"
                             >
                                 Register
                             </button>

@@ -24,7 +24,6 @@ function AdminLayout() {
 
             <main
                 className="min-h-screen text-white"
-                style={{ backgroundColor: "#282c34" }}
             >
                 <Outlet />
             </main>

@@ -32,7 +32,7 @@ function Navbar() {
                     to="/"
                     className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white select-none hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
                 >
-                    P.C.S. <span className="text-lg">Infoways</span>
+                    Service <span className="text-lg">Provider</span>
                 </NavLink>
 
                 {/* Desktop Navigation */}
@@ -49,18 +49,7 @@ function Navbar() {
                     >
                         Home
                     </NavLink>
-                    <NavLink
-                        to="/about"
-                        className={({ isActive }) =>
-                            `text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 ${
-                                isActive
-                                    ? "font-semibold border-b-2 border-blue-500"
-                                    : ""
-                            }`
-                        }
-                    >
-                        About
-                    </NavLink>
+
                     <NavLink
                         to="/products"
                         className={({ isActive }) =>
@@ -84,6 +73,18 @@ function Navbar() {
                         }
                     >
                         Services
+                    </NavLink>
+                    <NavLink
+                        to="/about"
+                        className={({ isActive }) =>
+                            `text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 ${
+                                isActive
+                                    ? "font-semibold border-b-2 border-blue-500"
+                                    : ""
+                            }`
+                        }
+                    >
+                        About
                     </NavLink>
                     <NavLink
                         to="/contact"

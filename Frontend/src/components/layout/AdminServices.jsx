@@ -195,7 +195,7 @@ function AdminServices() {
     };
 
     return (
-        <div className="container mx-auto lg:px-48 md:px-5 sm:px-5 min-h-screen bg-white dark:bg-gray-900 py-24 text-black dark:text-white">
+        <div className="container mx-auto lg:px-48 md:px-5 sm:px-5 min-h-screen bg-white dark:bg-black py-24 text-black dark:text-white">
             <div className="flex justify-between">
                 <h1 className="text-3xl font-bold mb-6">Our Services</h1>
                 <button
