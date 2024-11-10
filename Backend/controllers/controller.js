@@ -36,7 +36,7 @@ const login = async (req, res) => {
 // Register Controller
 const register = async (req, res) => {
     const { username, email, password, phone } = req.body;
-
+    
     // Check if the user already exists
 
     const userExist = await User.findOne({ email });
@@ -56,7 +56,7 @@ const register = async (req, res) => {
         phone,
     });
 
-    console.log(userCreated);
+    // console.log(userCreated);
     res.status(201).json({
         msg: "Registration Successfull 😊",
         token: await userCreated.generateToken(),
