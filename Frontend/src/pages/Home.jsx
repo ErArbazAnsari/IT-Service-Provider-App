@@ -84,6 +84,7 @@ const recentUpdates = [
 ];
 
 function Home() {
+    document.title = "Service Provider - IT Solutions";
     const [drawerOpen, setDrawerOpen] = useState(false);
 
     return (
