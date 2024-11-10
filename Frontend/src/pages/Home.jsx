@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Carousel } from "react-responsive-carousel"; // Ensure this package is installed
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // Import the carousel styles
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { SwipeableDrawer, Button } from "@mui/material";
 import LightDarkMode from "../components/UI/LightDarkMode";
 
@@ -84,7 +84,6 @@ const recentUpdates = [
 ];
 
 function Home() {
-    document.title = "PCS Infoways - IT Solutions";
     const [drawerOpen, setDrawerOpen] = useState(false);
 
     return (
