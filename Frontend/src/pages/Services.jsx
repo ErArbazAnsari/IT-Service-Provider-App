@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import LightDarkMode from "../components/UI/LightDarkMode";
 import { useAuth } from "../store/auth";
+import { HashLoader } from "react-spinners";
 
 function Services() {
     document.title = "Services";
     const { URI } = useAuth();
     const [services, setServices] = React.useState([]);
+    const [loading, setLoading] = useState(1);
 
     // Fetch data from the backend
     const fetchServices = async () => {
@@ -16,6 +18,7 @@ function Services() {
             }
             const data = await response.json();
             setServices(data.allServices || []);
+            setLoading(0);
         } catch (error) {
             console.error("Error fetching services:", error);
         }
@@ -25,8 +28,11 @@ function Services() {
         fetchServices();
     }, []);
 
+    if (loading) return <div className="flex justify-center items-center min-h-screen">
+        <HashLoader color="blue"/>
+    </div>;
     return (
-        <div className="container mx-auto lg:my-8 md:my-0 sm:my-0 dark:black px-12 lg:px-32">
+        <div className="container mx-auto lg:my-8 md:my-0 sm:my-0 dark:black px-12 lg:px-32 min-h-screen">
             <h1 className="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-gray-100">
                 Our Services
             </h1>
