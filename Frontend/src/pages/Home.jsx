@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import LightDarkMode from "../components/UI/LightDarkMode";
 import { toast } from "react-toastify";
+import { HashLoader } from "react-spinners";
 
 // Dummy data
 const featuredServices = [
@@ -118,6 +119,19 @@ function Home() {
 
     const [reviewer, setReviewer] = useState("");
     const [reviewerMessage, setReviewerMessage] = useState("");
+    const [loading, setLoading] = useState(1);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(0);
+        }, 300);
+    }, []);
+    if (loading)
+        return (
+            <div className="flex justify-center items-center min-h-screen">
+                <HashLoader />
+            </div>
+        );
 
     return (
         <div

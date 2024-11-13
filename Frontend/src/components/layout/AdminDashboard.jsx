@@ -67,7 +67,7 @@ function AdminDashboard() {
         const timer = setInterval(() => setDateTime(new Date()), 1000);
         return () => clearInterval(timer);
     }, []);
-
+    
     return (
         <div className="container mx-auto lg:px-48 md:px-5 sm:px-5 min-h-screen dark:bg-black text-gray-800 dark:text-white py-28">
             <div className="flex flex-col items-center justify-center h-48">

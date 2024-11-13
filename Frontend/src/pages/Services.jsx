@@ -29,7 +29,7 @@ function Services() {
     }, []);
 
     if (loading) return <div className="flex justify-center items-center min-h-screen">
-        <HashLoader color="blue"/>
+        <HashLoader/>
     </div>;
     return (
         <div className="container mx-auto lg:my-8 md:my-0 sm:my-0 dark:black px-12 lg:px-32 min-h-screen">
